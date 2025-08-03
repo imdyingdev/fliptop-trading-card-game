@@ -1,0 +1,26 @@
+/* Import all CSS files for holographic effects */
+@import url('/css/global.css');
+@import url('/css/cards/base.css');
+@import url('/css/cards.css');
+@import url('/css/cards/basic.css');
+@import url('/css/cards/reverse-holo.css');
+@import url('/css/cards/regular-holo.css');
+@import url('/css/cards/cosmos-holo.css');
+@import url('/css/cards/amazing-rare.css');
+@import url('/css/cards/radiant-holo.css');
+@import url('/css/cards/v-regular.css');
+@import url('/css/cards/v-full-art.css');
+@import url('/css/cards/v-max.css');
+@import url('/css/cards/v-star.css');
+@import url('/css/cards/trainer-full-art.css');
+@import url('/css/cards/rainbow-holo.css');
+@import url('/css/cards/rainbow-alt.css');
+@import url('/css/cards/secret-rare.css');
+@import url('/css/cards/trainer-gallery-holo.css');
+@import url('/css/cards/trainer-gallery-v-regular.css');
+@import url('/css/cards/trainer-gallery-v-max.css');
+@import url('/css/cards/trainer-gallery-secret-rare.css');
+@import url('/css/cards/shiny-rare.css');
+@import url('/css/cards/shiny-v.css');
+@import url('/css/cards/shiny-vmax.css');
+@import url('/css/cards/swsh-pikachu.css');

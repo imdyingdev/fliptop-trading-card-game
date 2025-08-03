@@ -2,6 +2,8 @@
   import { spring } from "svelte/motion";
   import { onMount } from "svelte";
   import { activeCard } from "../stores/activeCard.js";
+  import { tiltEnabled } from "../stores/tilt.js";
+  import { allCardsFlipped } from "../stores/flip.js";
   import { orientation, resetBaseOrientation } from "../stores/orientation.js";
   import { clamp, round, adjust } from "../helpers/Math.js";
 
@@ -20,6 +22,7 @@
   export let back = "https://tcg.pokemon.com/assets/img/global/tcg-card-back-2x.jpg";
   export let foil = "";
   export let mask = "";
+  export let alphaMask = ""; // Alpha channel mask for selective holo effects
 
   // context/environment props
   export let showcase = false;
@@ -38,8 +41,7 @@
 
   let back_img = back;
   let front_img = "";
-  let img_base = img.startsWith("http") ? "" : "https://images.pokemontcg.io/";
-
+  let img_base = img.startsWith('http') ? '' : 'https://images.pokemontcg.io/';
 
   let thisCard;
   let repositionTimer;
@@ -49,6 +51,8 @@
   let firstPop = true;
   let loading = true;
   let isVisible = document.visibilityState === "visible";
+  let isFlipped = false;
+  let flipTransition = false;
 
   const springInteractSettings = { stiffness: 0.066, damping: 0.25 };
   const springPopoverSettings = { stiffness: 0.033, damping: 0.45 };
@@ -108,13 +112,16 @@
       y: percent.y - 50,
     };
 
+    const rotation = $tiltEnabled 
+      ? { x: round(-(center.x / 3.5)), y: round(center.y / 2) } 
+      : { x: 0, y: 0 };
+
     updateSprings({
       x: adjust(percent.x, 0, 100, 37, 63),
       y: adjust(percent.y, 0, 100, 33, 67),
-    },{
-      x: round(-(center.x / 3.5)),
-      y: round(center.y / 2),
-    },{
+    },
+    rotation,
+    {
       x: round(percent.x),
       y: round(percent.y),
       o: 1,
@@ -263,6 +270,7 @@
     --card-scale: ${$springScale};
     --translate-x: ${$springTranslate.x}px;
     --translate-y: ${$springTranslate.y}px;
+    ${alphaMask ? `--alpha-mask: url(${alphaMask});` : ''}
 	`;
 
   $: {
@@ -341,11 +349,36 @@
     }
   };
 
+  // Handle global flip state changes
+  $: if ($allCardsFlipped !== isFlipped) {
+    handleFlip($allCardsFlipped);
+  }
+
+  const handleFlip = (shouldFlip) => {
+    if (shouldFlip === isFlipped) return;
+    
+    flipTransition = true;
+    
+    // Brief pause to hide glow effects if needed
+    setTimeout(() => {
+      isFlipped = shouldFlip;
+      
+      // Reset transition state after flip completes
+      setTimeout(() => {
+        flipTransition = false;
+      }, 600); // Match CSS transition duration
+    }, 100);
+  };
+
   onMount(() => {
 
     // set the front image on mount so that
     // the lazyloading can work correctly
-    front_img = img_base + img;
+    if (img && img.startsWith('/')) {
+      front_img = img;
+    } else {
+      front_img = img_base + img;
+    }
 
     // run a cute little animation on load
     // for showcase card
@@ -399,6 +432,8 @@
   class:interacting
   class:loading
   class:masked={!!mask}
+  class:flipped={isFlipped}
+  class:flip-transition={flipTransition}
   data-number={number}
   data-set={set}
   data-subtypes={subtypes}
@@ -428,7 +463,7 @@
         height="921"
       />
       <div class="card__front" 
-        style={ staticStyles + foilStyles }>
+        style={staticStyles + foilStyles}>
         <img
           src={front_img}
           alt="Front design of the {name} Pokemon Card, with the stats and info around the edge"
@@ -460,6 +495,53 @@
     --pointer-from-center: 0;    
     --pointer-from-top: var(--pointer-from-center);
     --pointer-from-left: var(--pointer-from-center);
+    --alpha-mask: none;
+  }
+
+  /* Alpha mask styles for selective holo effects */
+  .card[style*="--alpha-mask"] .card__shine,
+  .card[style*="--alpha-mask"] .card__glare {
+    -webkit-mask-image: var(--alpha-mask);
+    mask-image: var(--alpha-mask);
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+
+  /* Flip animation styles */
+  .card {
+    transition: transform 0.6s ease-in-out;
+    transform-style: preserve-3d;
+  }
+
+  .card.flipped {
+    transform: rotateY(180deg);
+  }
+
+  .card__front,
+  .card__back {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .card__back {
+    transform: rotateY(180deg);
+  }
+
+  /* Hide glow effects during flip transition */
+  .card.flip-transition .card__shine,
+  .card.flip-transition .card__glare {
+    opacity: 0;
+    transition: opacity 0.1s ease;
+  }
+
+  /* Restore glow effects after flip */
+  .card:not(.flip-transition) .card__shine,
+  .card:not(.flip-transition) .card__glare {
+    transition: opacity 0.3s ease 0.2s;
   }
 
 </style>

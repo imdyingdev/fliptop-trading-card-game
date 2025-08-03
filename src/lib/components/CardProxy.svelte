@@ -212,6 +212,10 @@
 
     }
 
+    // Return empty string if server (CDN) is not defined to avoid undefined URLs
+    if (!server) {
+      return "";
+    }
     return `${ server }/foils/${ fSet }/${ type }/upscaled/${ fNumber }_foil_${ etch }_${ style }_2x.${ ext }`;
 
   }
