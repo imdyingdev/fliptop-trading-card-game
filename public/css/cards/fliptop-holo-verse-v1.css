@@ -1,6 +1,6 @@
 /*
 
-  V MAX - COPY TEST
+  FLIPTOP HOLO VERSE V1
 
 */
 
@@ -8,9 +8,10 @@
 
 
 
-
-.card:not(.masked)[data-rarity="rare holo vmax"][data-supertype="pokémon"] .card__shine,
-.card:not(.masked)[data-rarity="rare holo vmax"][data-supertype="pokémon"] .card__shine:after {
+.card:not(.masked)[data-rarity="fliptop holo verse v1"][data-supertype="pokémon"] .card__shine,
+.card:not(.masked)[data-rarity="fliptop holo verse v1"][data-supertype="pokémon"] .card__shine:after,
+.card:not(.masked)[data-rarity="fliptop holo verse v1"] .card__shine,
+.card:not(.masked)[data-rarity="fliptop holo verse v1"] .card__shine:after {
 
   --mask: none;
   --foil: url("/img/vmaxbg.jpg"); 
@@ -24,7 +25,7 @@
 
 */
 
-.card[data-rarity="rare holo vmax"] .card__shine {
+.card[data-rarity="fliptop holo verse v1"] .card__shine {
 
   --space: 6%;
   --angle: 133deg;
@@ -71,7 +72,7 @@
 }
 
 
-.card[data-rarity="rare holo vmax"] .card__shine:after {
+.card[data-rarity="fliptop holo verse v1"] .card__shine:after {
 
   content: "";
 
@@ -112,14 +113,13 @@
 
 
 
-
 /*
 
   GLARE LAYERS
 
 */
 
-.card[data-rarity="rare holo vmax"] .card__glare {
+.card[data-rarity="fliptop holo verse v1"] .card__glare {
 
   mix-blend-mode: hard-light;
   filter: brightness(1) contrast(1);
@@ -145,6 +145,9 @@
 
 
 
+
+
+
 /*
 
   NO MASK
@@ -153,16 +156,11 @@
 
 
 
-.card:not(.masked) [data-rarity="rare holo vmax"] .card__shine {
+.card:not(.masked) [data-rarity="fliptop holo verse v1"] .card__shine {
 
   filter: brightness(calc((var(--pointer-from-center) * .4) + .4)) contrast(2) saturate(1);
 
 }
-
-
-
-
-
 
 
 

@@ -1,19 +1,19 @@
 /*
 
-  V MAX - COPY TEST
+  FLIPTOP GOLD VERSE
 
 */
 
 
 
 
-
-
-.card:not(.masked)[data-rarity="rare holo vmax"][data-supertype="pokémon"] .card__shine,
-.card:not(.masked)[data-rarity="rare holo vmax"][data-supertype="pokémon"] .card__shine:after {
+.card:not(.masked)[data-rarity="fliptop gold verse"][data-supertype="pokémon"] .card__shine,
+.card:not(.masked)[data-rarity="fliptop gold verse"][data-supertype="pokémon"] .card__shine:after,
+.card:not(.masked)[data-rarity="fliptop gold verse"] .card__shine,
+.card:not(.masked)[data-rarity="fliptop gold verse"] .card__shine:after {
 
   --mask: none;
-  --foil: url("/img/vmaxbg.jpg"); 
+  --foil: url("/img/goldverse.png"); 
   --imgsize: 60% 30%;
 
 }
@@ -24,7 +24,7 @@
 
 */
 
-.card[data-rarity="rare holo vmax"] .card__shine {
+.card[data-rarity="fliptop gold verse"] .card__shine {
 
   --space: 6%;
   --angle: 133deg;
@@ -33,32 +33,32 @@
   background-image:
     var(--foil),
     repeating-linear-gradient( -33deg, 
-      hsl(2, 70%, 47%) calc(var(--space)*1),  
-      hsl(228, 60%, 64%) calc(var(--space)*2), 
-      hsl(176, 55%, 39%) calc(var(--space)*3), 
-      hsl(123, 68%, 35%) calc(var(--space)*4), 
-      hsl(283, 75%, 57%) calc(var(--space)*5), 
-      hsl(2, 70%, 47%) calc(var(--space)*6)
+        hsla(2, 70%, 47%, 0) calc(var(--space)*1),  
+        hsla(228, 60%, 64%, 0) calc(var(--space)*2), 
+        hsla(176, 55%, 39%, 0) calc(var(--space)*3), 
+        hsla(123, 68%, 35%, 0) calc(var(--space)*4), 
+        hsla(283, 75%, 57%, 0) calc(var(--space)*5), 
+        hsla(2, 70%, 47%, 0) calc(var(--space)*6)
     ),
     repeating-linear-gradient( 
       var(--angle), 
-      hsla(227, 53%, 12%, 0.5) 0%, 
-      hsl(180, 10%, 50%) 2.5%, 
-      hsl(83, 50%, 35%) 5%, 
-      hsl(180, 10%, 50%) 7.5%, 
-      hsla(227, 53%, 12%, 0.5) 10% , 
-      hsla(227, 53%, 12%, 0.5) 15% 
+      hsla(45, 85%, 25%, 0.3) 0%, 
+      hsl(48, 90%, 65%) 2.5%, 
+      hsl(50, 95%, 70%) 5%, 
+      hsl(48, 90%, 65%) 7.5%, 
+      hsla(45, 85%, 25%, 0.3) 10% , 
+      hsla(45, 85%, 25%, 0.3) 15% 
       ),
     radial-gradient(
       farthest-corner circle 
       at var(--pointer-x) var(--pointer-y),
-      hsla(189, 76%, 77%, 0.6) 0%, 
-      hsla(147, 59%, 77%, 0.6) 25%, 
-      hsla(271, 55%, 69%, 0.6) 50%, 
-      hsla(355, 56%, 72%, 0.6) 75%
+      hsla(48, 95%, 80%, 0.4) 0%, 
+      hsla(45, 90%, 75%, 0.4) 25%, 
+      hsla(50, 85%, 70%, 0.4) 50%, 
+      hsla(52, 88%, 78%, 0.4) 75%
     );
 
-  background-blend-mode: difference, luminosity, soft-light;
+  background-blend-mode: multiply, overlay, soft-light;
   background-size: var(--imgsize), 1100% 1100%, 600% 600%, 200% 200%;
   background-position: 
     center, 
@@ -66,23 +66,23 @@
     var(--background-x) var(--background-y), 
     var(--background-x) var(--background-y);
 
-  filter: brightness(calc((var(--pointer-from-center) * .4) + .4)) contrast(2) saturate(1);
+  filter: brightness(calc((var(--pointer-from-center) * .4) + .4)) contrast(1.8) saturate(1.5);
 
 }
 
 
-.card[data-rarity="rare holo vmax"] .card__shine:after {
+.card[data-rarity="fliptop gold verse"] .card__shine:after {
 
   content: "";
 
   background-image: repeating-linear-gradient( 0deg, 
-    var(--sunpillar-clr-1) calc(var(--space)*1), 
-    var(--sunpillar-clr-2) calc(var(--space)*2), 
-    var(--sunpillar-clr-3) calc(var(--space)*3), 
-    var(--sunpillar-clr-4) calc(var(--space)*4), 
-    var(--sunpillar-clr-5) calc(var(--space)*5), 
-    var(--sunpillar-clr-6) calc(var(--space)*6), 
-    var(--sunpillar-clr-1) calc(var(--space)*7)
+    hsl(48, 98%, 54%) calc(var(--space)*1),  
+    hsl(48, 98%, 54%) calc(var(--space)*2), 
+    hsl(48, 98%, 54%) calc(var(--space)*3), 
+    hsl(48, 98%, 54%) calc(var(--space)*4), 
+    hsl(48, 98%, 54%) calc(var(--space)*5), 
+    hsl(48, 98%, 54%) calc(var(--space)*6)
+    
   ),
   repeating-linear-gradient( 
     var(--angle), 
@@ -112,14 +112,13 @@
 
 
 
-
 /*
 
   GLARE LAYERS
 
 */
 
-.card[data-rarity="rare holo vmax"] .card__glare {
+.card[data-rarity="fliptop gold verse"] .card__glare {
 
   mix-blend-mode: hard-light;
   filter: brightness(1) contrast(1);
@@ -145,6 +144,8 @@
 
 
 
+
+
 /*
 
   NO MASK
@@ -153,16 +154,10 @@
 
 
 
-.card:not(.masked) [data-rarity="rare holo vmax"] .card__shine {
+.card:not(.masked) [data-rarity="fliptop gold verse"] .card__shine {
 
   filter: brightness(calc((var(--pointer-from-center) * .4) + .4)) contrast(2) saturate(1);
 
 }
-
-
-
-
-
-
 
 

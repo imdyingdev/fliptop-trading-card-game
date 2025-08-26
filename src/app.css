@@ -24,3 +24,8 @@
 @import url('/css/cards/shiny-v.css');
 @import url('/css/cards/shiny-vmax.css');
 @import url('/css/cards/swsh-pikachu.css');
+@import url('/css/cards/fliptop-holo-verse-v1.css');
+
+/* NOTE: When adding new CSS files, also add to index.html */
+@import url('/css/cards/fliptop-holo-verse-v1.css');
+@import url('/css/cards/fliptop-gold-verse.css');

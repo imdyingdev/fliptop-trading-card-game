@@ -24,14 +24,31 @@
 			<CustomCard
 				img="/custom/emar-industrita-bb10.png"
 				back="/custom/fliptoptgc.png"
-				rarity="rare holo vmax"
+				rarity="rare ultra"
 				supertype="pokémon"
 				showcase={true}
 			/>
 		</div>
 		
-		<!-- Empty slots for future cards -->
-		<div class="card-slot empty"></div>
+		<div class="card-slot">
+			<CustomCard
+				img="/custom/saint-ice-u13.png"
+				back="/custom/fliptoptgc.png"
+				rarity="fliptop holo verse v1"
+				supertype="pokémon"
+				showcase={true}
+			/>
+		</div>
+
+		<div class="card-slot">
+			<CustomCard
+				img="/custom/saint-ice-u13.png"
+				back="/custom/fliptoptgc.png"
+				rarity="fliptop gold verse"
+				showcase={true}
+			/>
+		</div>
+		
 		<div class="card-slot empty"></div>
 		<div class="card-slot empty"></div>
 		<div class="card-slot empty"></div>
