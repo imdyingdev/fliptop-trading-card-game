@@ -32,7 +32,7 @@
 		
 		<div class="card-slot">
 			<CustomCard
-				img="/custom/aftersaint-ice-u13.png"
+				img="/custom/asaint-ice-u13.png"
 				back="/custom/fliptoptgc.png"
 				rarity="fliptop holo verse v1"
 				supertype="pokémon"
